@@ -1,0 +1,27 @@
+{
+  "name": "triviagame",
+  "version": "1.0.0",
+  "description": "\"trivia game\"",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WizardSource/triviaGame.git"
+  },
+  "keywords": [
+    "\"trivia\""
+  ],
+  "author": "Codesmith-Red",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WizardSource/triviaGame/issues"
+  },
+  "homepage": "https://github.com/WizardSource/triviaGame#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^17.0.2",
+    "webpack": "^5.30.0"
+  }
+}
