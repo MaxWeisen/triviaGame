@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Login / Sign Up Form</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="./src/main.css">
+
+</head>
+<body>
+  <div class="page">
+    <div class="page__container">
+        <!-- Navigation Header -->
+        <nav class="nav">
+          <ul class="header__list">
+            <li class="header__item"><a href="../index.html" class="nav__link">Home</a></li>
+            <li class="header__item"><a href="../Sign-In/login.html" class="nav__link">Code Pad</a></li>
+            <!-- box next to Images -->
+            <li class="header__item header__item--app">
+              <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="37" width="26" height="26"></rect><rect width="26" height="26"></rect><rect x="74" width="26" height="26"></rect><rect x="37" y="37" width="26" height="26"></rect><rect y="37" width="26" height="26"></rect><rect x="74" y="37" width="26" height="26"></rect><rect x="37" y="74" width="26" height="26"></rect><rect y="74" width="26" height="26"></rect><rect x="74" y="74" width="26" height="26"></rect></svg>
+            </li>
+            <li onclick="document.location='./Sign-In/Login.html'"><button class="sign__in">Sign Up</button></li>
+          </ul>
+        </nav>
+        
+  <div class="container">
+        <form class="form" id="login">
+            <h1 class="form__title">Login</h1>
+            <div class="form__message form__message--error"></div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" autofocus placeholder="Username or email">
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" autofocus placeholder="Password">
+                <div class="form__input-error-message"></div>
+            </div>
+            <button class="form__button" type="submit">Continue</button>
+            <p class="form__text">
+                <a href="#" class="form__link">Forgot your password?</a>
+            </p>
+            <p class="form__text">
+                <a class="form__link" href="./" id="linkCreateAccount">Don't have an account? Create account</a>
+            </p>
+        </form>
+        <form class="form form--hidden" id="createAccount">
+            <h1 class="form__title">Create Account</h1>
+            <div class="form__message form__message--error"></div>
+            <div class="form__input-group">
+                <input type="text" id="signupUsername" class="form__input" autofocus placeholder="Username">
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" autofocus placeholder="Email Address">
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" autofocus placeholder="Password">
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" autofocus placeholder="Confirm password">
+                <div class="form__input-error-message"></div>
+            </div>
+            <button class="form__button" type="submit">Continue</button>
+            <p class="form__text">
+                <a class="form__link" href="./" id="linkLogin">Already have an account? Sign in</a>
+            </p>
+        </form>
+    </div>
+  </div>
+  </div>
+    <script src="./src/main.js"></script>
+</body>
+</html>

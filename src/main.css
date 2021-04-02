@@ -1,0 +1,257 @@
+:root {
+  --color-white: #ffffff;
+  --color-gray-100: #d0d0d0;
+  --color-gray-200: #c0c0c0;
+  --color-gray-300: #b8b8b8;
+  --color-gray-400: #a9a9a9;
+  --color-gray-500: #707070;
+  --border-radius: 8px
+
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+    --color-primary: #333;
+    --color-primary-dark: #222;
+    --color-secondary: #a9a9a9;
+    --color-error: #cf7676;
+    --color-success: #4bb544;
+
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-white);
+}
+
+.container {
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+    width: 500px;
+    max-width: 500px;
+    margin: 8rem;
+    padding: 2rem;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+    background: #ffffff;
+
+
+    /* background-color:#222;
+    width: 75px;
+    height: 30px;
+    color: azure;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: 600;
+    border-radius: 4px;
+    border: none; */
+
+}
+
+.container,
+.form__input,
+.form__button {
+    font: 500 1rem 'Quicksand', sans-serif;
+}
+
+.form--hidden {
+    display: none;
+}
+
+.form > *:first-child {
+    margin-top: 0;
+}
+
+.form > *:last-child {
+    margin-bottom: 0;
+}
+
+.form__title {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form__message {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.form__message--success {
+    color: var(--color-success);
+}
+
+.form__message--error {
+    color: var(--color-error);
+}
+
+.form__input-group {
+    margin-bottom: 1rem;
+}
+
+.form__input {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    border: 1px solid #dddddd;
+    outline: none;
+    background: #eeeeee;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.form__input:focus {
+    border-color: var(--color-primary);
+    background: #ffffff;
+}
+
+.form__input--error {
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+.form__input-error-message {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-error);
+}
+
+.form__button {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #ffffff;
+    border: none;
+    border-radius: var(--border-radius);
+    outline: none;
+    cursor: pointer;
+    background: var(--color-primary);
+}
+
+.form__button:hover {
+    background: var(--color-primary-dark);
+}
+
+.form__button:active {
+    transform: scale(0.98);
+}
+
+.form__text {
+    text-align: center;
+}
+
+.form__link {
+    color: var(--color-secondary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form__link:hover {
+    text-decoration: underline;
+}
+
+
+  
+  .page {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .page__container {
+    margin: 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* position: relative; */
+    align-items: center;
+    
+  }
+  
+  /* Links */
+  a:link,
+  a:visited {
+      text-decoration: none;
+      color: #5f6368;
+      font-size: 14px;
+  }
+  a:hover {
+      text-decoration: underline;
+  }
+  
+  /* Navigation */
+  .nav {
+    text-align: right;
+    width: 100%;
+    padding: 15px;
+    padding-right: 30px;
+  }
+  
+  .header__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+
+
+  /* Header Login */
+ 
+  .sign__in {
+    background-color:#222;
+    width: 75px;
+    height: 30px;
+    color: azure;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: 600;
+    border-radius: 4px;
+    border: none;
+  }
+  
+  .header__item:not(:last-child) {
+    margin-right: 15px;
+  }
+  
+  .header__item--app {
+    height: 30px;
+    width: 30px;
+    position: relative;
+  }
+  
+  .header__item--app svg {
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    fill: var(--color-gray-500);
+  }
+  
+  .header__item--profile {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    position: relative;
+  }
+  
+  .header__item--profile a {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background-image: url("../images/profilePicture.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+  }
+  
+
