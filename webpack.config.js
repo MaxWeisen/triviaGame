@@ -22,6 +22,7 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
+
       }
     ]
   },
@@ -29,6 +30,7 @@ module.exports = {
     publicPath: '/build/',
     proxy: {
       '/': 'http://localhost:3000',
+      '/api' : 'http://localhost:3000'
     }
   }
 }
