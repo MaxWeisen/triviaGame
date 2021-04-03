@@ -1,26 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import '../src/login.scss';
-
-class App extends React.Component{
-    render(){
-        return(
-            <>
+class Login extends React.Component {
+ 
+  render() {
+    return (
+      <>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charSet="utf-8" />
   <title>Login / Sign Up Form</title>
-  <link rel="shortcut icon" href="/assets/favicon.ico" />
-  <link rel="stylesheet" href="/login.css" type="text/css" />
+  {/* <link rel="shortcut icon" href="/assets/favicon.ico" />
+  <link rel="stylesheet" href="/login.css" type="text/css" /> */}
   <div className="page">
     <div className="page__container">
       {/* Navigation Header */}
       <nav className="nav">
-        <ul className="header__list">
+        <ul className="header__list"> 
           <li className="header__item"><a href="../index.html" className="nav__link">Home</a></li>
           <li className="header__item"><a href="../Sign-In/login.html" className="nav__link">Music Trivia</a></li>
           {/* box next to Images */}
           <li className="header__item header__item--app">
-          
+            
           </li>
           <li onclick="document.location='./Sign-In/Login.html'"><button className="sign__in">Sign Up</button></li>
         </ul>
@@ -74,8 +73,6 @@ class App extends React.Component{
   </div>
 </>
 
-        )
-    }
+    )
+  }
 }
-
-ReactDOM.render(<App />, document.getElementById('app'))

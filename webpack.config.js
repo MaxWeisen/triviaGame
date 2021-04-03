@@ -2,9 +2,9 @@ const path = require('path');
 
 module.exports = {
   mode: process.env.NODE_ENV,
-  entry: path.resolve('./Client/App/index.js'),
+  entry: path.resolve(__dirname, './Client/App/index.js'),
   output: {
-    path: path.resolve(__dirname, 'build', 'Client'),
+    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js'
   },
   module: {
@@ -26,9 +26,9 @@ module.exports = {
     ]
   },
   devServer: {
-    publicPath: 'http://localhost:8080/',
+    publicPath: '/build/',
     proxy: {
-      '/api': 'http://localhost:3000',
+      '/': 'http://localhost:3000',
     }
   }
 }
