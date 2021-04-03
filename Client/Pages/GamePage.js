@@ -22,19 +22,32 @@ class GamePage extends React.Component{
  
 
   parseAndPopulate(apiArray){
+
+	// Converts HTML Entities into proper Symbols
+	function unescapeHtml(safe) {
+		return safe.replace(/&amp;/g, '&')
+			.replace(/&lt;/g, '<')
+			.replace(/&gt;/g, '>')
+			.replace(/&quot;/g, '"')
+			.replace(/&#039;/g, "'")
+      .replace(/&rdquo;/g, "'");
+	  }
+
+
+	// Convert the Array from the api request to a different array of question objects
 	return apiArray.results.map( questionObject => {
 		const newQuestion = {};
 
-		newQuestion.questionText = questionObject.question;
+		newQuestion.questionText = unescapeHtml(questionObject.question);
 		newQuestion.answerOptions = Object.keys(questionObject).reduce((answArr, key) => {
             if (key === 'correct_answer') {
                answArr.push(
-				{ answerText: questionObject[key], isCorrect: true }
+				{ answerText: unescapeHtml(questionObject[key]), isCorrect: true }
 			   )
 			}
 			else if (key === 'incorrect_answers'){
 				answArr.push(
-					...questionObject[key].map(incorrectAns => ({ answerText: incorrectAns , isCorrect: false }))
+					...questionObject[key].map(incorrectAns => ({ answerText: unescapeHtml(incorrectAns) , isCorrect: false }))
 				)
 			}
 
@@ -45,7 +58,7 @@ class GamePage extends React.Component{
 			//copyright CLIFF CODEZ
 		return newQuestion;
 	});
-  }
+}
  
 
   
@@ -66,10 +79,7 @@ class GamePage extends React.Component{
 		})
 		.catch(err => console.log(err))
 	}
-	
 
-  
-	
 
 	handleAnswerOptionClick (isCorrect) {
 		if (isCorrect === true) {
