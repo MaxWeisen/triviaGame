@@ -1,94 +1,119 @@
-// import React from 'react'
 import React, { useState } from 'react';
 
 
-function GamePage() {
-
-
-  // we have to reassing questions to the api calls results key (which is an array)
-  const questions = [
-		{
-			questionText: 'What is the capital of France?',
-			answerOptions: [
-				{ answerText: 'New York', isCorrect: false },
-				{ answerText: 'London', isCorrect: false },
-				{ answerText: 'Paris', isCorrect: true },
-				{ answerText: 'Dublin', isCorrect: false },
-			],
-		},
-		{
-			questionText: 'Who is CEO of Tesla?',
-			answerOptions: [
-				{ answerText: 'Jeff Bezos', isCorrect: false },
-				{ answerText: 'Elon Musk', isCorrect: true },
-				{ answerText: 'Bill Gates', isCorrect: false },
-				{ answerText: 'Tony Stark', isCorrect: false },
-			],
-		},
-		{
-			questionText: 'The iPhone was created by which company?',
-			answerOptions: [
-				{ answerText: 'Apple', isCorrect: true },
-				{ answerText: 'Intel', isCorrect: false },
-				{ answerText: 'Amazon', isCorrect: false },
-				{ answerText: 'Microsoft', isCorrect: false },
-			],
-		},
-		{
-			questionText: 'How many Harry Potter books are there?',
-			answerOptions: [
-				{ answerText: '1', isCorrect: false },
-				{ answerText: '4', isCorrect: false },
-				{ answerText: '6', isCorrect: false },
-				{ answerText: '7', isCorrect: true },
-			],
-		},
-	];
-
-	const [currentQuestion, setCurrentQuestion] = useState(0);
-	const [showScore, setShowScore] = useState(false);
-	const [score, setScore] = useState(0);
-
-	const handleAnswerOptionClick = (isCorrect) => {
-		if (isCorrect) {
-			setScore(score + 1);
+class GamePage extends React.Component{
+	constructor(props) {
+		super(props);
+		this.state = {
+			questions: [],
+			numberRight: 0,
+			numberWrong: 0,
+			currentChoice: null,
+			currentQuestion: 0,
+			score: 0,
+			showScore: false
 		}
 
-		const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
-			setCurrentQuestion(nextQuestion);
+		this.parseAndPopulate = this.parseAndPopulate.bind(this);
+		this.handleAnswerOptionClick = this.handleAnswerOptionClick.bind(this);
+
+	}
+  
+ 
+
+  parseAndPopulate(apiArray){
+	return apiArray.results.map( questionObject => {
+		const newQuestion = {};
+
+		newQuestion.questionText = questionObject.question;
+		newQuestion.answerOptions = Object.keys(questionObject).reduce((answArr, key) => {
+            if (key === 'correct_answer') {
+               answArr.push(
+				{ answerText: questionObject[key], isCorrect: true }
+			   )
+			}
+			else if (key === 'incorrect_answers'){
+				answArr.push(
+					...questionObject[key].map(incorrectAns => ({ answerText: incorrectAns , isCorrect: false }))
+				)
+			}
+
+			return answArr;
+		},[]);
+
+		newQuestion.answerOptions = newQuestion.answerOptions.sort(function() { return 0.5 - Math.random() });
+			//copyright CLIFF CODEZ
+		return newQuestion;
+	});
+  }
+ 
+
+  
+
+
+	componentDidMount() {
+		// const triviaQuestions = parseAndPopulate(this.tryIt)
+		//fetch to /api (set in webpack config as a proxy localhost3000)
+		fetch('/api')
+		.then(data =>{ 
+			return data.json();
+		})
+		.then(data => {
+      console.log(this.parseAndPopulate(data))
+			this.setState({questions: this.parseAndPopulate(data)
+
+			})
+		})
+		.catch(err => console.log(err))
+	}
+	
+
+  
+	
+
+	handleAnswerOptionClick (isCorrect) {
+		if (isCorrect === true) {
+			this.setState({score: this.state.score + 1})
+		}
+  
+		const nextQuestion = this.state.currentQuestion + 1;
+		if (nextQuestion < this.state.questions.length) {
+			this.setState({ currentQuestion: nextQuestion});
 		} else {
-			setShowScore(true);
+			this.setState({ showScore: true });
 		}
 	};
 
+ render(){
+	 console.log(this.state.score);
+	 
+	 if (this.state.questions.length === 0) return <div>NOTHING HERE</div>
 
-	return (
+	return ( 
 		<div className='game'>
-			{showScore ? (
+			 {this.state.showScore ? (
 				<div className='score-section'>
-					You scored {score} out of {questions.length}
+					You scored {this.state.score} out of {this.state.questions.length}
 				</div>
 			) : (
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{questions.length}
+							<span>Question {this.state.currentQuestion + 1}</span>/{this.state.questions.length}
 						</div>
-            {/* the questionText must be reassigned to the question key */}
-						<div className='question-text'>{questions[currentQuestion].questionText}</div>
+						<div className='question-text'>{this.state.questions[this.state.currentQuestion].questionText}</div>
 					</div>
 					<div className='answer-section'>
-
-          {/* this syntax must be changed because the answers from api are labeled differntly */}
-						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+						{this.state.questions[this.state.currentQuestion].answerOptions.map((answerOption, i) => (
+							<button key={i + 'button'} onClick={() => this.handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
 						))}
 					</div>
 				</>
-			)}
+			)} 
 		</div>
-  )
+   )}
+ 
+	
 }
 
 export default GamePage

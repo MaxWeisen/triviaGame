@@ -12,7 +12,7 @@
 
     "test": "echo \"Error: no test specified\" && exit 1",
 
-    "start": "NODE_ENV=production nodemon server/server.js" ,
+    "start": "NODE_ENV=production nodemon server/server.js",
 
     "build": "NODE_ENV=production webpack  --config webpack.config.js",
 
@@ -51,6 +51,8 @@
     "@babel/preset-react": "^7.13.13",
 
     "express": "^4.17.1",
+
+    "node-fetch": "^2.6.1",
 
     "nodemon": "^2.0.7",
 

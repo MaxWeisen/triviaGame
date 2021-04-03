@@ -2,6 +2,7 @@
 import GamePage from '../Pages/GamePage'
 import React, { useState } from 'react';
 import './Lobby.scss';
+const fetch = require('node-fetch');
 
 
  class Lobby extends React.Component{
@@ -10,10 +11,7 @@ import './Lobby.scss';
 
      this.state = {
       isPlaying: false,
-      questions: [],
-      numberRight: 0,
-      numberWrong: 0,
-      currentChoice : null
+   
      }
      this.startGame = this.startGame.bind(this);
    }
@@ -22,28 +20,21 @@ import './Lobby.scss';
 
     console.log('START GAME');
     this.setState({isPlaying: true});
-
-    //fetch to /api (set in webpack config as a proxy localhost3000)
-
   }
 
   render(){
 
-    console.log(this.state.isPlaying);
-
     return (
      
         this.state.isPlaying ? 
-          <div class="container">
-           <div class="vertical-center">
-                <div><GamePage/></div> 
+          <div className="container">
+           <div className="vertical-center">
+                <div><GamePage questions={this.state.questions}/></div> 
            </div>
           </div>
-           
         : 
-          
-        <div class="container">
-            <div class="vertical-center">
+        <div className="container">
+            <div className="vertical-center">
                <button className = "Lobby__PlayButton"onClick={() => this.startGame()}>PLAY DA TING!</button>
             </div>
         </div>
