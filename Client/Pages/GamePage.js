@@ -97,7 +97,7 @@ class GamePage extends React.Component{
  render(){
 	 console.log(this.state.score);
 	 
-	 if (this.state.questions.length === 0) return <div>NOTHING HERE</div>
+	 if (this.state.questions.length === 0) return <div> </div>
 
 	return ( 
 		<div className='game'>

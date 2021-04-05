@@ -14,3 +14,4 @@ npm install --save-dev webpack-dev-server webpack-cli babel-loader @babel/core @
 
     Client/App/index.js is our main page
     GamePage is where the game functionality is implemented
+    

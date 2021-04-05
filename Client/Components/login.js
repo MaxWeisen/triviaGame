@@ -22,6 +22,7 @@ class Login extends React.Component {
           <nav className="nav">
             <ul className="header__list">
               <li className="header__item"><a href="../index.html" className="nav__link">Home</a></li>
+              {/* this button takes you to the game without login */}
               <li className="header__item"><Link to="/Lobby">Trivia Game</Link> </li>
               {/* box next to Images */}
               <li className="header__item header__item--app">
