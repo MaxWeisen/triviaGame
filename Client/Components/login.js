@@ -51,7 +51,7 @@ class Login extends React.Component {
       referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
       body: JSON.stringify(loginInfo) // body data type must match "Content-Type" header
     })
-    .then(data => console.log('Sucessfully Sent to Server'))
+    .then(data => console.log('Successfully Sent to Server'))
     .catch(err => console.log(err));
 
   }
