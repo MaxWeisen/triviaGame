@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from '../Components/login';
+import Login from '../Components/Login';
 // import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Lobby from "../Pages/Lobby.js";
+import Signup from '../Components/SignUp';
 
 
 function App(){
@@ -12,9 +13,12 @@ function App(){
         return(
           <BrowserRouter>
             <div className="wrapper">
-            {/* <h1>Main</h1> */}
+
                 <Route exact path='/'>
                   <Login/>
+                </Route>
+                <Route exact path="/SignUp">
+                  <Signup/>
                 </Route>
                 <Route path="/Lobby">
                   <Lobby />

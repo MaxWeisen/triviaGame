@@ -1,15 +1,63 @@
 import React from 'react';
 import '../src/login.scss';
 import {Link} from 'react-router-dom';
-// import Lobby from "../Pages/Lobby.js";
+import Lobby from "../Pages/Lobby.js";
 
 
 
 class Login extends React.Component {
 
+  constructor(props){
+    super(props);
+
+    this.state = {
+      username: '',
+      password: ''
+    }
+
+    this.handleUserNameText = this.handleUserNameText.bind(this);
+    this.handlePasswordText = this.handlePasswordText.bind(this);
+    this.attemptLogin = this.attemptLogin.bind(this);
+  }
+
+  handleUserNameText(e){
+    console.log(e.target.value);
+    this.setState({ username: e.target.value })
+  }
+
+  handlePasswordText(e){
+    console.log(e.target.value);
+    this.setState({ password: e.target.value })
+  }
+
+  attemptLogin(e){
+    e.preventDefault();
+
+    const loginInfo = {
+      username: this.state.username,
+      password: this.state.password
+    }
+    
+    fetch('/login', {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify(loginInfo) // body data type must match "Content-Type" header
+    })
+    .then(data => console.log('Sucessfully Sent to Server'))
+    .catch(err => console.log(err));
+
+  }
+
   render() {
     return (
-
           <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charSet="utf-8" />
@@ -21,14 +69,11 @@ class Login extends React.Component {
           {/* Navigation Header */}
           <nav className="nav">
             <ul className="header__list">
-              <li className="header__item"><a href="../index.html" className="nav__link">Home</a></li>
               {/* this button takes you to the game without login */}
               <li className="header__item"><Link to="/Lobby">Trivia Game</Link> </li>
               {/* box next to Images */}
-              <li className="header__item header__item--app">
-
-              </li>
-              <li onClick="document.location='./Sign-In/Login.html'"><button className="sign__in">Sign Up</button></li>
+              <li className="header__item header__item--app"></li>
+                <Link to="/SignUp"><button className="sign__in">Sign Up</button></Link>
             </ul>
           </nav>
           <div className="container">
@@ -36,43 +81,19 @@ class Login extends React.Component {
               <h1 className="form__title">Login</h1>
               <div className="form__message form__message--error" />
               <div className="form__input-group">
-                <input type="text" className="form__input" autofocus placeholder="Username or email" />
+                <input type="text" className="form__input" autofocus="true" placeholder="Username or email" value={this.state.username} onChange={this.handleUserNameText}/>
                 <div className="form__input-error-message" />
               </div>
               <div className="form__input-group">
-                <input type="password" className="form__input" autofocus placeholder="Password" />
+                <input type="password" className="form__input" autofocus="true" placeholder="Password" value={this.state.password} onChange={this.handlePasswordText} />
                 <div className="form__input-error-message" />
               </div>
-              <button className="form__button" type="submit">Continue</button>
+              <button className="form__button" type="submit" onClick={this.attemptLogin}>Continue</button>
               <p className="form__text">
                 <a href="#" className="form__link">Forgot your password?</a>
               </p>
               <p className="form__text">
-                <a className="form__link" href="./" id="linkCreateAccount">Don't have an account? Create account</a>
-              </p>
-            </form>
-            <form className="form form--hidden" id="createAccount">
-              <h1 className="form__title">Create Account</h1>
-              <div className="form__message form__message--error" />
-              <div className="form__input-group">
-                <input type="text" id="signupUsername" className="form__input" autofocus placeholder="Username" />
-                <div className="form__input-error-message" />
-              </div>
-              <div className="form__input-group">
-                <input type="text" className="form__input" autofocus placeholder="Email Address" />
-                <div className="form__input-error-message" />
-              </div>
-              <div className="form__input-group">
-                <input type="password" className="form__input" autofocus placeholder="Password" />
-                <div className="form__input-error-message" />
-              </div>
-              <div className="form__input-group">
-                <input type="password" className="form__input" autofocus placeholder="Confirm password" />
-                <div className="form__input-error-message" />
-              </div>
-              <button className="form__button" type="submit">Continue</button>
-              <p className="form__text">
-                <a className="form__link" href="./" id="linkLogin">Already have an account? Sign in</a>
+                <Link className="form__form__link" to="/SignUp" id="linkCreateAccount">Don't have an account? Create account</Link>
               </p>
             </form>
           </div>
@@ -83,9 +104,7 @@ class Login extends React.Component {
     )
   }
 
-  // Login.propTypes = {
-  //   setToken: PropTypes.func.isRequired
-  // }
+
 
 }
 
