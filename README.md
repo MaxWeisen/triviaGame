@@ -12,5 +12,13 @@ npm install --save-dev webpack-dev-server webpack-cli babel-loader @babel/core @
 
 # Layout
 
-    Client/App/index.js is our main page
-    GamePage is where the game functionality is implemented
+    - Client/App/index.js is our main page
+        - Lobby is where a user starts their game (eventually implement multiplayer)
+        - GamePage is where the game functionality is implemented
+
+# IF ACCESS IS NEEDED FOR THE MONGODB SERVER
+
+The account information to access the server can be accessed on MongoDb.com with this info:
+
+Username: redLippedBatfishMongoDB@gmail.com
+Password: codesmithLA42

@@ -3,6 +3,7 @@ import GamePage from '../Pages/GamePage'
 import React, { useState } from 'react';
 import './Lobby.scss';
 const fetch = require('node-fetch');
+import { Redirect } from 'react-router-dom';
 
 
  class Lobby extends React.Component{
@@ -11,10 +12,45 @@ const fetch = require('node-fetch');
 
      this.state = {
       isPlaying: false,
-   
+      category: "0",
+      difficulty: "any",
+      questionCount: "5",
+      error: "",
+      background: ""
      }
      this.startGame = this.startGame.bind(this);
    }
+
+
+
+
+
+
+  onCategoryChange = (e) => {
+      const category = e.target.value;
+      this.setState({ category })
+  }
+
+  onDifficultyChange = (e) => {
+      const difficulty = e.target.value;
+      this.setState({ difficulty });
+  }
+
+  onCountChange = (e) => {
+      const questionCount = e.target.value;
+      this.setState({ questionCount });
+  }
+  submitForm = (e) => {
+    e.preventDefault();
+    const config = {
+        room: this.state.room,
+        category: this.state.category,
+        difficulty: this.state.difficulty,
+        questionCount: this.state.questionCount
+    };
+  }
+
+
 
   startGame() {
 
@@ -35,9 +71,29 @@ const fetch = require('node-fetch');
         : 
         <div className="container">
             <div className="vertical-center">
-               <button className = "Lobby__PlayButton"onClick={() => this.startGame()}>PLAY DA TING!</button>
-            </div>
+
+
+                  <div className="box-layout__box">
+
+                <form className="form" onSubmit={this.submitForm}>
+                    
+                    
+                    <select className="select" value={this.state.difficulty} onChange={this.onDifficultyChange}>
+                        <option key={"any"} value={"any"}>Any Difficulty</option>
+                        <option key="easy" value="easy">Easy</option>
+                        <option key="medium" value="medium">Medium</option>
+                        <option key="hard" value="hard">Hard</option>
+                    </select>
+                    <select className="select" value={this.state.questionCount} onChange={this.onCountChange}>
+                        <option key="5" value="5">5 Questions</option>
+                        <option key="10" value="10">10 Questions</option>
+                        <option key="15" value="15">15 Questions</option>
+                    </select>
+                    <button className = "button" onClick={() => this.startGame()}>Play da ting!</button>
+                </form>
+          </div>
         </div>
+      </div>
     );
   }
 }
@@ -73,4 +129,8 @@ const fetch = require('node-fetch');
     Send An Api Request to
 */
 
-export default Lobby
+
+
+
+export default ( Lobby);
+// export default Lobby
