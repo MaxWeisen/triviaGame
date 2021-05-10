@@ -2,8 +2,12 @@ const express = require('express');
 const path = require('path');
 const fetch = require('node-fetch');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
+
+//Enable Cors
+app.use(cors());
 
 
 // Connect The Server to the Mongo DB
@@ -38,5 +42,10 @@ app.get('/api', (req, res) => {
      .then(triviaQuest => res.status(200).json(triviaQuest))
      .then(end => res.end());
 })
+
+// Test route for Spearmint Endpoint Testing
+app.use('/test', (req, res) => {
+  res.status(200).json('Request Received');
+});
 
 app.listen(3000);
