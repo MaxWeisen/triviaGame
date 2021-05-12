@@ -1,4 +1,4 @@
-const app = require('../Server/Models/userModel.js');
+const app = require('../Server/Server.js');
 const supertest = require('supertest');
 const regeneratorRuntime = require('regenerator-runtime');
 const request = supertest(app)
