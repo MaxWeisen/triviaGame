@@ -1,104 +1,55 @@
 {
-
-  "name": "triviagame",
-
-  "version": "1.0.0",
-
-  "description": "\"trivia game\"",
-
-  "main": "main.js",
-
-  "scripts": {
-
-    "test": "echo \"Error: no test specified\" && exit 1",
-
-    "start": "NODE_ENV=production nodemon server/server.js",
-
-    "build": "NODE_ENV=production webpack  --config webpack.config.js",
-
-    "dev": "NODE_ENV=development webpack serve & nodemon server/server.js"
-
-  },
-
-  "repository": {
-
-    "type": "git",
-
-    "url": "git+https://github.com/WizardSource/triviaGame.git"
-
-  },
-
-  "keywords": [
-
-    "\"trivia\""
-
-  ],
-
-  "author": "Codesmith-Red",
-
-  "license": "ISC",
-
-  "bugs": {
-
-    "url": "https://github.com/WizardSource/triviaGame/issues"
-
-  },
-
-  "homepage": "https://github.com/WizardSource/triviaGame#readme",
-
-  "dependencies": {
-
-    "@babel/preset-react": "^7.13.13",
-
-    "express": "^4.17.1",
-
-    "node-fetch": "^2.6.1",
-
-    "nodemon": "^2.0.7",
-
-    "react": "^17.0.2",
-
-    "react-audio-player": "^0.16.1",
-
-    "react-dom": "^17.0.2",
-
-    "react-router-dom": "^5.2.0",
-
-    "watch": "^1.0.2",
-
-    "webpack": "^5.30.0"
-
-  },
-
-  "devDependencies": {
-
-    "@babel/core": "^7.13.14",
-
-    "@babel/preset-env": "^7.13.12",
-
-    "babel-loader": "^8.2.2",
-
-    "css-loader": "^5.2.0",
-
-    "file-loader": "^6.2.0",
-
-    "mini-css-extract-plugin": "^1.4.0",
-
-    "mongoose": "^5.12.3",
-
-    "path": "^0.12.7",
-
-    "sass": "^1.32.8",
-
-    "sass-loader": "^11.0.1",
-
-    "style-loader": "^2.0.0",
-
-    "webpack-cli": "^4.6.0",
-
-    "webpack-dev-server": "^3.11.2"
-
-  }
-
+    "name": "triviagame",
+    "version": "1.0.0",
+    "description": "\"trivia game\"",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "NODE_ENV=production nodemon server/server.js",
+        "build": "NODE_ENV=production webpack  --config webpack.config.js",
+        "dev": "NODE_ENV=development webpack serve & nodemon server/server.js",
+        "dev-windows": "NODE_ENV=development webpack serve",
+        "serve-windows": "nodemon server/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/WizardSource/triviaGame.git"
+    },
+    "keywords": [
+        "\"trivia\""
+    ],
+    "author": "Codesmith-Red",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/WizardSource/triviaGame/issues"
+    },
+    "homepage": "https://github.com/WizardSource/triviaGame#readme",
+    "dependencies": {
+        "@babel/preset-react": "^7.13.13",
+        "express": "^4.17.1",
+        "node-fetch": "^2.6.1",
+        "nodemon": "^2.0.7",
+        "react": "^17.0.2",
+        "react-audio-player": "^0.16.1",
+        "react-dom": "^17.0.2",
+        "react-router-dom": "^5.2.0",
+        "watch": "^1.0.2",
+        "webpack": "^5.30.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/preset-env": "^7.13.12",
+        "babel-loader": "^8.2.2",
+        "concurrently": "^6.1.0",
+        "css-loader": "^5.2.0",
+        "file-loader": "^6.2.0",
+        "mini-css-extract-plugin": "^1.4.0",
+        "mongoose": "^5.12.3",
+        "path": "^0.12.7",
+        "sass": "^1.32.8",
+        "sass-loader": "^11.0.1",
+        "style-loader": "^2.0.0",
+        "webpack-cli": "^4.6.0",
+        "webpack-dev-server": "^3.11.2"
+    }
 }
-
