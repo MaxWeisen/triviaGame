@@ -2,12 +2,12 @@ const express = require('express');
 const path = require('path');
 const fetch = require('node-fetch');
 // const mongoose = require('mongoose');
-const cors = require('cors');
+// const cors = require('cors');
 
 const app = express();
 
 //Enable Cors
-app.use(cors());
+// app.use(cors());
 
 
 // Connect The Server to the Mongo DB
